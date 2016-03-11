@@ -44,7 +44,7 @@ namespace Serilog
             LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum,
             IFormatProvider formatProvider = null)
         {
-            if (loggerConfiguration == null) throw new ArgumentNullException("loggerConfiguration");
+            if (loggerConfiguration == null) throw new ArgumentNullException(nameof(loggerConfiguration));
             return loggerConfiguration.Sink(new ApplicationInsightsSink(CreateTelemetryClientFromInstrumentationkey(instrumentationKey), formatProvider), restrictedToMinimumLevel);
         }
 
@@ -69,8 +69,8 @@ namespace Serilog
             LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum,
             IFormatProvider formatProvider = null)
         {
-            if (loggerConfiguration == null) throw new ArgumentNullException("loggerConfiguration");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+            if (loggerConfiguration == null) throw new ArgumentNullException(nameof(loggerConfiguration));
+            if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
             return loggerConfiguration.Sink(new ApplicationInsightsSink(CreateTelemetryClientFromConfiguration(configuration), formatProvider), restrictedToMinimumLevel);
         }
@@ -94,8 +94,8 @@ namespace Serilog
             LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum,
             IFormatProvider formatProvider = null)
         {
-            if (loggerConfiguration == null) throw new ArgumentNullException("loggerConfiguration");
-            if (telemetryClient == null) throw new ArgumentNullException("telemetryClient");
+            if (loggerConfiguration == null) throw new ArgumentNullException(nameof(loggerConfiguration));
+            if (telemetryClient == null) throw new ArgumentNullException(nameof(telemetryClient));
 
             return loggerConfiguration.Sink(new ApplicationInsightsSink(telemetryClient, formatProvider), restrictedToMinimumLevel);
         }
